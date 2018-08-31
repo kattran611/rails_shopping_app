@@ -10,4 +10,12 @@ def item_price
   "#{self.name} {self.price}"
 end
 
+before_validation :ensure_price_has_value
+
+private
+  def ensure_price_has_value
+    if price.nil?
+    self.price = "$0"
+  end
+end
 end
